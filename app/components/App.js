@@ -12,20 +12,17 @@ import React, {
 import { Actions } from 'react-native-router-flux';
 
 import api from '../utils/api';
-import { trimTitle } from '../utils/utils';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      eventId: null
+      eventId: ''
     }
   }
 
   render() {
-    const { events } = this.state;
-
     return (
       <ScrollView style={styles.container}>
           <View>
@@ -53,7 +50,7 @@ export default class App extends Component {
 
     api.event(eventId)
       .then(events => {
-        Actions.event({title: events.title, events });
+        Actions.event({ title: events.title, events });
       }).done();
   }
 }

@@ -1,19 +1,15 @@
 import React, {
   Component,
-  View,
   ScrollView,
   Text,
   StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  Image
+  TouchableOpacity
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
 
 import Tickets from './Tickets';
 import api from '../utils/api';
-import { trimTitle } from '../utils/utils';
 
 export default class Event extends Component {
 
