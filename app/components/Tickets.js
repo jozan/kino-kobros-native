@@ -19,13 +19,13 @@ export default class Tickets extends Component {
           <TouchableOpacity
             onPress={() => onPressTicket(ticket)}
             key={`ticket.eventId${i}`}
-            style={styles.ticket}
+            style={styles.ticketContainer}
           >
-            <View>
-              <Text>Teatteri: {venue.theater}</Text>
-              <Text>Sali: {venue.room}</Text>
-              <Text>Rivi: {ticket.seat.row}</Text>
-              <Text>Paikka: {ticket.seat.seat}</Text>
+            <View style={styles.ticket}>
+              <Text style={styles.text}>Teatteri: {venue.theater}</Text>
+              <Text style={styles.text}>Sali: {venue.room}</Text>
+              <Text style={styles.text}>Rivi: {ticket.seat.row}</Text>
+              <Text style={styles.text}>Paikka: {ticket.seat.seat}</Text>
             </View>
           </TouchableOpacity>
         )}
@@ -36,12 +36,17 @@ export default class Tickets extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#fff'
   },
-  ticket: {
-    paddingBottom: 14,
-    marginBottom: 14,
+  ticketContainer: {
     borderBottomColor: '#ddd',
     borderBottomWidth: StyleSheet.hairlineWidth
+  },
+  ticket: {
+    padding: 14,
+  },
+  text: {
+    color: '#333'
   }
 });

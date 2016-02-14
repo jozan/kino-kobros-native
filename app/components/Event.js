@@ -3,7 +3,8 @@ import React, {
   ScrollView,
   Text,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Image,
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux';
@@ -19,6 +20,10 @@ export default class Event extends Component {
 
     return (
       <ScrollView style={styles.container}>
+        <Image
+          style={{ width: 320, height: 480/3 }}
+          source={{ uri: events.poster }}
+        />
         <Tickets
           venue={events.venue}
           tickets={events.tickets}
@@ -39,7 +44,6 @@ export default class Event extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    flex: 1,
-    padding: 14
+    flex: 1
   }
 });
