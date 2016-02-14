@@ -4,10 +4,11 @@ import React, {
   Text,
   StyleSheet,
   Image,
-  TouchableOpacity
+  View
 } from 'react-native';
 
 import QRCode from 'react-native-qrcode';
+import ToiletCode from './ToiletCode';
 
 export default class SingleTicket extends Component {
   render() {
@@ -21,6 +22,9 @@ export default class SingleTicket extends Component {
           value={ticket.id}
           size={250}
         />
+        <View style={styles.toiletCode}>
+          <ToiletCode image={`https://www.finnkino.fi${ticket.img}`} />
+        </View>
       </ScrollView>
     );
   }
@@ -29,7 +33,9 @@ export default class SingleTicket extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 14,
-    backgroundColor: '#fff'
+    padding: 14
+  },
+  toiletCode: {
+    marginTop: 14
   }
 });
