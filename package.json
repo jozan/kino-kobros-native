@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "react-native": "^0.19.0",
-    "react-native-qrcode": "github:jozan/react-native-qrcode"
+    "react-native-qrcode": "0.0.14",
+    "react-native-router-flux": "^2.2.2"
   }
 }

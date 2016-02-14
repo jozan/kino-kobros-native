@@ -2,33 +2,17 @@
 
 import React, {
   AppRegistry,
-  Component,
-  StyleSheet,
-  View
+  Component
 } from 'react-native';
 
-import App from './app/components/App';
-import Nav from './app/components/Nav';
+import Routes from './app/components/Routes';
 
 class KinoKobros extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Nav
-          initialRoute={{
-            component: App
-          }}
-        />
-      </View>
+      <Routes />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#333',
-  }
-});
 
 AppRegistry.registerComponent('KinoKobros', () => KinoKobros);

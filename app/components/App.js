@@ -9,7 +9,8 @@ import React, {
   Image
 } from 'react-native';
 
-import Tickets from './Tickets';
+import { Actions } from 'react-native-router-flux';
+
 import api from '../utils/api';
 import { trimTitle } from '../utils/utils';
 
@@ -18,36 +19,16 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      events: null,
       eventId: null
     }
   }
 
-  getEvents(eventId) {
-    api.event(eventId)
-      .then(events => {
-        this.setState({ events });
-      }).done();
-  }
-
   render() {
     const { events } = this.state;
-    console.log(events);
 
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>
-          {events ? trimTitle(events.originalTitle) : null}
-        </Text>
-
-        {events ?
-          <Tickets
-            tickets={events.tickets}
-            onPressTicket={this.handleOnPressTicket.bind(this)}
-          />
-        :
           <View>
-            <Text style={styles.appTitle}>Kino Kobros</Text>
             <TextInput
               style={styles.input}
               onChangeText={eventId => this.setState({ eventId })}
@@ -63,23 +44,17 @@ export default class App extends Component {
               </View>
             </TouchableOpacity>
           </View>
-        }
-
       </ScrollView>
     );
-  }
-
-  handleOnPressTicket(SingleTicket, ticket) {
-    this.props.navigator.push({
-      component: SingleTicket,
-      ticket,
-    });
   }
 
   handleOnPressShowEvent() {
     const { eventId } = this.state;
 
-    eventId && this.getEvents(eventId.toLocaleString());
+    api.event(eventId)
+      .then(events => {
+        Actions.event({title: events.title, events });
+      }).done();
   }
 }
 
@@ -87,17 +62,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     flex: 1,
-    padding: 14,
-    paddingTop: 30,
-  },
-  appTitle: {
-    color: '#333',
-    fontSize: 35,
-    marginBottom: 35
-  },
-  title: {
-    fontSize: 25,
-    marginBottom: 20
+    padding: 14
   },
   input: {
     borderWidth: 1,

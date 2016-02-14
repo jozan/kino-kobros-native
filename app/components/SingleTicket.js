@@ -1,6 +1,6 @@
 import React, {
   Component,
-  View,
+  ScrollView,
   Text,
   StyleSheet,
   Image,
@@ -14,14 +14,14 @@ export default class SingleTicket extends Component {
     const { ticket } = this.props;
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Text>Rivi: {ticket.seat.row}</Text>
         <Text>Paikka: {ticket.seat.seat}</Text>
         <QRCode
           value={ticket.id}
           size={250}
         />
-      </View>
+      </ScrollView>
     );
   }
 }
